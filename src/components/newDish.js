@@ -5,14 +5,20 @@ import AddIcon from "@material-ui/icons/Add";
 
 class NewDish extends Component{
 
-    addDish(event) {
+    // constructor() {
+    //     super();
+    //     this.addDish = this.addDish.bind(this);
+    // }
+
+    addDish = event => {
         console.log('Agregar platillo');
         event.preventDefault();
+        console.log(this);
     }
 
     render() {
 
-        console.log(this);
+        //console.log(this);
 
         return (
             <form autoComplete="off" onSubmit={this.addDish}>
