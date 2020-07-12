@@ -10,33 +10,36 @@ class NewDish extends Component{
     //     this.addDish = this.addDish.bind(this);
     // }
 
+    newDish = React.createRef();
+
     addDish = event => {
         console.log('Agregar platillo');
         event.preventDefault();
-        console.log(this);
+        console.log(this.newDish.value);
     }
 
     render() {
-
-        //console.log(this);
-
         return (
             <form autoComplete="off" onSubmit={this.addDish}>
-            <TextField
-                label="Platillo..."
-                type="text"
-                margin="normal"
-                variant="outlined"
-            >
-            </TextField>
-            <Fab 
-                color="primary" 
-                size="medium"
-                className="dish-form-icon" 
-                onClick={this.addDish}
-            >
-                <AddIcon></AddIcon>
-            </Fab>
+
+                {/* <input ref={this.newDish} /> */}
+
+                <TextField
+                    label="Platillo..."
+                    type="text"
+                    margin="normal"
+                    variant="outlined"
+                    inputRef={e => (this.newDish = e)}
+                >
+                </TextField>
+                <Fab 
+                    color="primary" 
+                    size="medium"
+                    className="dish-form-icon" 
+                    onClick={this.addDish}
+                >
+                    <AddIcon></AddIcon>
+                </Fab>
             </form>
         );
     }
