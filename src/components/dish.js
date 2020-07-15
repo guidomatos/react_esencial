@@ -6,69 +6,55 @@ import {
     ListItem,
     ListSubheader,
     ListItemText,
-    ListItemIcon
+    ListItemIcon,
+    TextField,
+    IconButton
 } from '@material-ui/core';
 import ScatterPlot from '@material-ui/icons/ScatterPlot';
-
-
-
-// import Button from '@material-ui/core/Button';
-
-export class Flag extends Component{
-    render(){
-        return(
-            <div>
-                <h1>Bandera</h1>
-            </div>
-        );
-    }
-}
-
-export class Ingredient extends Component {
-    render() {
-        //return React.createElement('h4', {}, "Ingrediente");
-        return(
-          <Fragment>
-              <h4>Ingredientes</h4>
-              <h4>Ingredientes</h4>
-          </Fragment>  
-        );
-    }
-}
+import Edit from '@material-ui/icons/Edit';
 
 class Dish extends Component{
 
-    ingredients = ["Tortilla", "Carne", "Cebolla"];
+    state = {
+        edit: false,
+        name: this.props.name
+    };
 
-    countIngredients(){
-        return this.ingredients.length;
-    }
+    edit = e => {
+        this.setState({ edit: !this.state.edit });
+    };
+
+    handleChange = e => {
+        let newState = { ...this.state };
+        newState.name = e.currentTarget.value;
+        
+        this.setState(newState);
+    };
 
     render() {
-
-        // const { params } = this.props.match;
-
-        // return (
-        //     <div className="dish">
-        //         <h1>{ params.name }</h1>
-        //         <h1>{ this.props.name }</h1>
-        //         <h3>{ this.countIngredients() }</h3>
-        //         <ul>
-        //             {this.ingredients.map((ingredient, index) => (
-        //                 <li key={index}>{ingredient}</li>
-        //             ))}
-        //         </ul>
-        //         <Button variant="contained">Elegir</Button>
-        //     </div>
-        // );
-
         return (
             <Card className="card">
                 <CardContent>
                     <List
                         component="nav"
                         subheader={
-                            <ListSubheader component="div">{this.props.name}
+                            <ListSubheader component="div">
+                                {
+                                    this.state.edit ? (
+                                      <TextField
+                                        label="Platillo..."
+                                        type="text"
+                                        margin="normal"
+                                        variant="outlined"
+                                        value={this.state.name}
+                                        onChange={this.handleChange}
+                                      ></TextField>   
+                                    ) : (
+                                        this.props.name
+                                    )}
+                                    <IconButton size="small" onClick={this.edit}>
+                                        <Edit></Edit>
+                                    </IconButton>
                             </ListSubheader>
                         }
                     >
@@ -76,9 +62,7 @@ class Dish extends Component{
                         (
                             <ListItem button key={index}>
                                 <ListItemIcon>
-                                    <ScatterPlot>
-
-                                    </ScatterPlot>
+                                    <ScatterPlot></ScatterPlot>
                                 </ListItemIcon>
                                 <ListItemText inset primary={ingredient}></ListItemText>
                             </ListItem>
