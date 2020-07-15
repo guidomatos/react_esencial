@@ -1,6 +1,18 @@
 import React, { Component, Fragment } from "react";
+import {
+    Card,
+    CardContent,
+    List,
+    ListItem,
+    ListSubheader,
+    ListItemText,
+    ListItemIcon
+} from '@material-ui/core';
+import ScatterPlot from '@material-ui/icons/ScatterPlot';
 
-import Button from '@material-ui/core/Button';
+
+
+// import Button from '@material-ui/core/Button';
 
 export class Flag extends Component{
     render(){
@@ -34,21 +46,48 @@ class Dish extends Component{
 
     render() {
 
-        const { params } = this.props.match;
+        // const { params } = this.props.match;
+
+        // return (
+        //     <div className="dish">
+        //         <h1>{ params.name }</h1>
+        //         <h1>{ this.props.name }</h1>
+        //         <h3>{ this.countIngredients() }</h3>
+        //         <ul>
+        //             {this.ingredients.map((ingredient, index) => (
+        //                 <li key={index}>{ingredient}</li>
+        //             ))}
+        //         </ul>
+        //         <Button variant="contained">Elegir</Button>
+        //     </div>
+        // );
 
         return (
-            <div className="dish">
-                <h1>{ params.name }</h1>
-                <h1>{ this.props.name }</h1>
-                <h3>{ this.countIngredients() }</h3>
-                <ul>
-                    {this.ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
-                    ))}
-                </ul>
-                <Button variant="contained">Elegir</Button>
-            </div>
-        );
+            <Card className="card">
+                <CardContent>
+                    <List
+                        component="nav"
+                        subheader={
+                            <ListSubheader component="div">{this.props.name}
+                            </ListSubheader>
+                        }
+                    >
+                        {this.props.ingredients.map((ingredient, index) =>
+                        (
+                            <ListItem button key={index}>
+                                <ListItemIcon>
+                                    <ScatterPlot>
+
+                                    </ScatterPlot>
+                                </ListItemIcon>
+                                <ListItemText inset primary={ingredient}></ListItemText>
+                            </ListItem>
+                        ))}
+                    </List>
+                </CardContent>
+            </Card>
+        )
+
     }
 }
 
