@@ -9,7 +9,7 @@ import {
     GridList
 } from '@material-ui/core';
 import Restaurant from '@material-ui/icons/Restaurant';
-import data from '../assets/data/dishes.json';
+
 import Dish from '../components/dish';
 
 export class Dishes extends Component {
@@ -22,38 +22,11 @@ export class Dishes extends Component {
     render() {
         return (
             <div>
-                <h1>Platillos</h1>
-                <Button variant="contained" color="secondary" onClick={this.goBack}>
-                    Regresar
-                </Button>
-
-                {/* {data.dishes.map(dish => (
-                    <div>
-                        <div>{dish.name}</div>
-                        <div>{dish.ingredients}</div>
-                        <br/>
-                    </div>
-                ))} */}
-
-                {/* <List
-                    component="nav"
-                    subheader={<ListSubheader component="div">Platillos</ListSubheader>}
-                >
-                    {data.dishes.map((dish, index) => (
-                        <ListItem button key={index}>
-                            <ListItemIcon>
-                                <Restaurant></Restaurant>
-                            </ListItemIcon>
-                            <ListItemText inset primary={dish.name}></ListItemText>
-                        </ListItem>
-                    ))}
-                </List> */}
                 <GridList>
-                    {data.dishes.map((dish, index) => (
+                    {this.props.data.dishes.map((dish, index) => (
                         <Dish key={index} name={dish.name} ingredients={dish.ingredients}></Dish>
                     ))}
                 </GridList>
-
             </div>
         );
     }
