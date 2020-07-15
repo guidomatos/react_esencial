@@ -21,13 +21,22 @@ class App extends Component {
     this.props.history.push("/platillos");
   };
 
+  updateDish = (index, updatedName) => {
+    let newState = {...this.state};
+    newState.dishes.dishes[index].name = updatedName;
+
+    this.setState(newState);
+  }
+
   render() {
     return (
       <div className="App">
           <Header/>
           <NewDish></NewDish>
           {/* <Dish name={this.dish} qty="3" ></Dish> */}
-          <Dishes data={this.state.dishes}></Dishes>
+          <Dishes data={this.state.dishes}
+          onUpdateDish={this.updateDish}
+          ></Dishes>
       </div>
     );
   }
