@@ -3,11 +3,24 @@ import Button from '@material-ui/core/Button';
 
 export class Countries extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+          countries: []  
+        };
+    }
+
+    componentDidMount() {
+        this.getCountries();
+    }
+
     getCountries() {
         fetch
         ("https://restcountries.eu/rest/v2/all")
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            this.setState({ countries: data});
+        })
         .catch(error => console.log(error));
     }
 
