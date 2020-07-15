@@ -4,7 +4,7 @@ import App from './../App';
 import Dishes from './dishes';
 import Dish from './dish';
 import Countries from './countries';
-// import NotFound from  './notFound';
+import NotFound from './notFound';
 
 const Router = () => (
     <BrowserRouter>
@@ -13,6 +13,7 @@ const Router = () => (
         <Route path="/platillos" component={Dishes} />
         <Route path="/platillo/:name" component={Dish} />
         <Route path="/countries" component={Countries} />
+        <Route component={NotFound} />
     </Switch>
     </BrowserRouter>
 );

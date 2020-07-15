@@ -13,8 +13,8 @@ export class Dishes extends Component {
             <div>
                 <h1>Platillos</h1>
                 <Button variant="contained" color="secondary" onClick={this.goBack}>
-                Regresar
-            </Button>
+                    Regresar
+                </Button>
             </div>
         );
     }
